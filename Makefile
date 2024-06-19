@@ -4,19 +4,17 @@ run:
 install: requirements.txt
 	pip install -r requirements.txt
 
-install_dev: requirements.txt requirements_dev.txt 
-	make -C install
+install-dev: requirements.txt requirements_dev.txt 
+	make install
 	pip install -e .
 
-runTask1:
-	make -C ./task1 run
+install-dev-ju: requirements.txt 
+	make install-dev
+	pip install -r requirements_dev_ju.txt
 
-runTask2:
-	make -C ./task2 run
+install-dev-ju-nvim: requirements.txt
+	make install-dev-ju
+	pip install -r requirements_dev_ju_nvim.txt
 
-runTask3:
-	make -C ./task3_narrow run
-
-runTask4:
-	make -C ./task4_balance run
-
+regenerate_requirements: src
+	pigar generate src
